@@ -15,7 +15,7 @@ export default class formAddSV extends Component {
             tenSV: "",
             ngaySinh: "",
             gioiTinh: "",
-            khoa: "",
+            khoa: "Toán",
         }
     }
 
@@ -43,15 +43,14 @@ export default class formAddSV extends Component {
                     <Form onSubmit={this.handleOnSubmit}>
                         <Row className="mb-3 mt-4">
                             <Form.Group className='mb-1'>
-                                <div className='inputInfo'>
-                                    <label>Mã SV: </label>
-                                    <input
-                                        type='text'
-                                        value={maSV}
-                                        name='maSV'
-                                        onChange={this.handleOnChange}
-                                    />
-                                </div>
+                                <label>Mã SV: </label>
+                                <input
+                                    type='text'
+                                    value={maSV}
+                                    name='maSV'
+                                    required
+                                    onChange={this.handleOnChange}
+                                />
                             </Form.Group>
                             <Form.Group className='mb-1'>
                                 <label>Tên SV: </label>
@@ -59,6 +58,7 @@ export default class formAddSV extends Component {
                                     type='text'
                                     value={tenSV}
                                     name='tenSV'
+                                    required
                                     onChange={this.handleOnChange}
                                 />
                             </Form.Group>

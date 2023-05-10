@@ -15,6 +15,18 @@ export default class ShowSV extends Component {
         }
     }
 
+    handleOnChange = (e) => {
+        console.log("Checkbox: ", e.target.value);
+    }
+
+    handleEdit = (maSV) => {
+        console.log("Edit: ", maSV);
+    }
+
+    handleDelete = (maSV) => {
+        console.log("Delete: ", maSV);
+    }
+
     handleAddSV = (nSinhVien) => {
         let isMaSVExisted = this.state.sinhVien.some((item) => item.maSV === nSinhVien.maSV);
         if (isMaSVExisted) {
@@ -32,41 +44,6 @@ export default class ShowSV extends Component {
         const { sinhVien } = this.state
         return (
             <>
-                {/* <div className='DisplayArea-container'>
-                    <table>
-                        <thead>
-                            <tr>
-                                <td></td>
-                                <td>Mã SV</td>
-                                <td>Tên sinh viên</td>
-                                <td>Ngày sinh</td>
-                                <td>Giới tính</td>
-                                <td>Khoa</td>
-                                <td></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {sinhVien.map((item) => {
-                                return (
-                                    <tr key={item.maSV}>
-                                        <td><input type='checkbox' /></td>
-                                        <td>{item.maSV}</td>
-                                        <td>{item.tenSV}</td>
-                                        <td>{item.ngaySinh}</td>
-                                        <td>{item.gioiTinh}</td>
-                                        <td>{item.khoa}</td>
-                                        <td>
-                                            <button>Edit</button>
-                                            &nbsp;
-                                            <button>Delete</button>
-                                        </td>
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
-                    </table>
-                </div> */}
-
                 <Table striped bordered hover>
                     <thead>
                         <tr>
@@ -83,16 +60,16 @@ export default class ShowSV extends Component {
                         {sinhVien.map((item) => {
                             return (
                                 <tr key={item.maSV}>
-                                    <td><input type='checkbox' /></td>
+                                    <td><input type='checkbox' value={item.maSV} onChange={this.handleOnChange} /></td>
                                     <td>{item.maSV}</td>
                                     <td>{item.tenSV}</td>
                                     <td>{item.ngaySinh}</td>
                                     <td>{item.gioiTinh}</td>
                                     <td>{item.khoa}</td>
                                     <td>
-                                        <button>Edit</button>
+                                        <button onClick={() => this.handleEdit(item.maSV)}>Edit</button>
                                         &nbsp;
-                                        <button>Delete</button>
+                                        <button onClick={() => this.handleDelete(item.maSV)}>Delete</button>
                                     </td>
                                 </tr>
                             )
