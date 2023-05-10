@@ -15,9 +15,17 @@ export default class ShowSV extends Component {
     }
 
     handleAddSV = (nSinhVien) => {
-        this.setState({
-            sinhVien: [...this.state.sinhVien, nSinhVien]
-        })
+        let isMaSVExisted = this.state.sinhVien.some((item) => item.maSV === nSinhVien.maSV);
+        if (isMaSVExisted) {
+            alert("MaSV đã tồn tại !!")
+            return;
+        }
+        else {
+            this.setState({
+                sinhVien: [...this.state.sinhVien, nSinhVien]
+            })
+        }
+
     }
     render() {
         const { sinhVien } = this.state
@@ -40,13 +48,17 @@ export default class ShowSV extends Component {
                             {sinhVien.map((item) => {
                                 return (
                                     <tr key={item.maSV}>
-                                        <td></td>
+                                        <td><input type='checkbox' /></td>
                                         <td>{item.maSV}</td>
                                         <td>{item.tenSV}</td>
                                         <td>{item.ngaySinh}</td>
                                         <td>{item.gioiTinh}</td>
                                         <td>{item.khoa}</td>
-                                        <td></td>
+                                        <td>
+                                            <button>Edit</button>
+                                            &nbsp;
+                                            <button>Delete</button>
+                                        </td>
                                     </tr>
                                 )
                             })}

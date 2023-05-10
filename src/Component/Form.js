@@ -21,13 +21,12 @@ export default class Form extends Component {
         this.setState({
             [name]: value
         })
-
-
     }
 
     handleOnSubmit = (e) => {
         e.preventDefault();
         this.props.handleAddSV(this.state)
+
     }
 
     render() {
@@ -70,7 +69,7 @@ export default class Form extends Component {
                             name="gioiTinh"
                             onChange={this.handleOnChange}
                         />Nam
-
+                        &nbsp;
                         <input
                             type="radio"
                             value="Nữ"
