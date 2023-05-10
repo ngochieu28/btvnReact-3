@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Form from './Form'
 import "./style.scss"
+import Table from 'react-bootstrap/Table';
 
 export default class ShowSV extends Component {
 
@@ -31,7 +32,7 @@ export default class ShowSV extends Component {
         const { sinhVien } = this.state
         return (
             <>
-                <div className='DisplayArea-container'>
+                {/* <div className='DisplayArea-container'>
                     <table>
                         <thead>
                             <tr>
@@ -64,7 +65,42 @@ export default class ShowSV extends Component {
                             })}
                         </tbody>
                     </table>
-                </div>
+                </div> */}
+
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td>Mã SV</td>
+                            <td>Tên sinh viên</td>
+                            <td>Ngày sinh</td>
+                            <td>Giới tính</td>
+                            <td>Khoa</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {sinhVien.map((item) => {
+                            return (
+                                <tr key={item.maSV}>
+                                    <td><input type='checkbox' /></td>
+                                    <td>{item.maSV}</td>
+                                    <td>{item.tenSV}</td>
+                                    <td>{item.ngaySinh}</td>
+                                    <td>{item.gioiTinh}</td>
+                                    <td>{item.khoa}</td>
+                                    <td>
+                                        <button>Edit</button>
+                                        &nbsp;
+                                        <button>Delete</button>
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </Table>
+
+
 
                 <Form handleAddSV={this.handleAddSV} />
             </>
